@@ -154,7 +154,9 @@ const App: React.FC = () => {
   };
 
   const handleLogout = () => {
-      signOut(auth).catch(err => console.error('Firebase signout error:', err));
+      if (auth) {
+        signOut(auth).catch(err => console.error('Firebase signout error:', err));
+      }
       setIsAuthenticated(false);
       localStorage.removeItem('mnf_auth');
       localStorage.removeItem('mnf_role');
